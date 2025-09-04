@@ -9,13 +9,35 @@
 <body>
     <h1>EMS</h1>
     <button onclick="handleClick()">Fetch Employee Details</button>
+    <!--
+        when the user clicks on the button, call the display function in the function
+        alert your name and city;
+    -->
+    <!-- <button onclick="infoClick()">Display Info</button> -->
 
     <!--JavaScript file -->
     <script>
-        console.log("Hello!")
 
         function handleClick(){  // eventListener / eventHandler
-            alert("You clicked me!");
+            //traditional - xhr obj  [xhr - XMLHttpRequest]
+            const xhr = new XMLHttpRequest();  // create new object
+            xhr.open("GET", "https://jsonplaceholder.typicode.com/users");  //configure xhr obj
+            xhr.send();  //send the request to the server
+            xhr.onload = function(){  //fn gets called once the response has been received from the server
+                console.log('data received', typeof xhr.responseText);  //data in json format i.e string object
+                const data = JSON.parse(xhr.responseText); //parse the data
+                console.log(typeof data, data);
+                console.log("Total Users", data.length);  //operations to perform
+
+                //to get all the users data using for-each
+                data.forEach((ele) => {
+                    console.log(ele.name);
+                })
+            }
+        }
+
+        function infoClick(){
+            alert("Ramit  - Bangalore")
         }
     </script>
 </body>
