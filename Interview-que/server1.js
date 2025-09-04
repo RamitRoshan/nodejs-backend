@@ -18,6 +18,7 @@ const server = http.createServer((request, response) => {
         response.end(JSON.stringify(items));
 
     } else if(request.url === "/health" && request.method === "GET"){
+        //status code-200
         response.writeHead(200, {"Content-Type": "application/json"});
         response.end(JSON.stringify({status:"up"}));
 
