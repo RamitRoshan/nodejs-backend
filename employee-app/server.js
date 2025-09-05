@@ -35,7 +35,7 @@ const employees = [
   {
     id: 106,
     name: "Sanu Kumar",
-    title: "Java Full Developer",
+    title: "Java Developer",
     email: "sanu.kumar@techwave.com"
   }
 ];
