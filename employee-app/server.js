@@ -31,19 +31,13 @@ const employees = [
     name: "Sneha Kulkarni",
     title: "QA Analyst",
     email: "sneha.kulkarni@techwave.com"
-  },
-  {
-    id: 106,
-    name: "Sanu Kumar",
-    title: "Java Developer",
-    email: "sanu.kumar@techwave.com"
   }
 ];
 
 const server = http.createServer((req,res) => {
     // API endpoint
     if(req.url === "/employees" && req.method === "GET"){
-        res.writeHead(200, { "Content-Type" : "application/json"});
+        res.writeHead(200, { "Content-Type" : "application/json", "Access-Control-Allow-Origin" : "*"});
         //employee is a array of object, so we need to conver it into string()
         res.end(JSON.stringify(employees));
     }else{
