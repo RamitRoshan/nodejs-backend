@@ -1,49 +1,33 @@
-const http = require('http');
-const port = 3060;
+//Que). Build an HTTP Server Using Only Node js, The server must expose routes that
+//1) send a welcome message & 2) return an array of objects as JSON
 
-const employees = [
-  {
-    id: 101,
-    name: "Ananya Gupta",
-    title: "Software Engineer",
-    email: "ananya.gupta@techwave.com"
-  },
-  {
-    id: 102,
-    name: "Rohan Sharma",
-    title: "Backend Developer",
-    email: "rohan.sharma@techwave.com"
-  },
-  {
-    id: 103,
-    name: "Priya Nair",
-    title: "UI/UX Designer",
-    email: "priya.nair@techwave.com"
-  },
-  {
-    id: 104,
-    name: "Vikram Mehta",
-    title: "DevOps Engineer",
-    email: "vikram.mehta@techwave.com"
-  },
-  {
-    id: 105,
-    name: "Sneha Kulkarni",
-    title: "QA Analyst",
-    email: "sneha.kulkarni@techwave.com"
-  } 
+const http = require('http');
+const port = 3000;
+
+const items = [
+    {id:1, "name": "Alpha"},
+    {id:2, "name": "Beta"},
 ];
 
-const server = http.createServer((req, res) => {
-    if(req.url === "/employees" && req.method === "GET"){
-        res.writeHead(200, {"Content-Type": "application/json"});
-        res.end(JSON.stringify(employees));
+const server = http.createServer((request, response) => {
+
+    if(request.url === "/" && request.method === "GET"){
+        response.writeHead(200, {'Content-Type': 'text/plain'});
+        response.end("Welcome to the Nodejs HTTP Server!!");
+
+    } else if(request.url === "/items" && request.method === "GET"){
+        response.writeHead(200, {"Content-Type": "application/json"});
+        response.end(JSON.stringify(items));
+
+    } else if(request.url === "/health" && request.method === "GET"){
+        response.writeHead(200, {"Content-Type": "application/json"})
+        response.end(JSON.stringify({status: "up"}));
     }else{
-        res.writeHead(404, {"Content-Type": "text/plain"});
-        res.end("page not found");
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        response.end("page not found");
     }
 });
 
 server.listen(port, () => {
     console.log(`server is running on port ${port}`);
-})
+});
