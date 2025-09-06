@@ -1,5 +1,5 @@
 const http = require('http');
-const port = 3050;
+const port = 4000;
 
 const employees = [
   {
@@ -56,7 +56,3 @@ server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 })
 
-
-
-// GET → Retrieve data from the server (read-only).
-// Example: Fetching a user list.

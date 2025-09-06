@@ -26,7 +26,7 @@
             xhr.onload = function(){  //fn gets called once the response has been received from the server
                 console.log('data received', typeof xhr.responseText);  //data in json format i.e string object
                 const data = JSON.parse(xhr.responseText); //parse the data
-                console.log(typeof data, data);
+                console.log(typeof data, data); //object
                 console.log("Total Users", data.length);  //operations to perform
 
                 //to get all the users data using for-each
