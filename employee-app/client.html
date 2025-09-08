@@ -25,12 +25,18 @@
 
         function handleClick(){  // eventListener / eventHandler
             //traditional - xhr obj  [xhr - XMLHttpRequest]
-            const countHandle = document.getElementById('count');
-            const listHandle = document.getElementById('list');
+
+            //## Alternative ways of targetting element in web page except than .getElementById
+
+            // const countHandle = document.getElementById('count');
+            const countHandle = document.querySelector('#count');
+            // const listHandle = document.getElementById('list');
+            const listHandle = document.querySelector('#list');
 
             //clean-up code
             listHandle.innerHTML = "";
-
+            
+            //AJAX → new XMLHttpRequest() → open → send
             const xhr = new XMLHttpRequest();  // create new object
             xhr.open("GET", "http://localhost:4000/employees");  //configure xhr obj
             xhr.send();  //send the request to the server
