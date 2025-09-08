@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿# Node.js Backend  
-=======
 # Node.js Backend  
->>>>>>> 7b31a08 (README.md)
 
 This repository contains my practice code, notes, and projects while learning **Backend Development with Node.js**.  
 
