@@ -1,0 +1,88 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listing Countries</title>
+</head>
+<body>
+    <h1>Listing Countries</h1>
+    <ul id="list"></ul>
+
+    <script>
+        const listHandle = document.querySelector('#list');
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://restcountries.com/v3.1/all?fields=name,capital");
+        xhr.send();
+
+        xhr.onload = function() {
+            const data = JSON.parse(xhr.responseText);
+
+            // pick only the countries we want to print
+            const pickCountries = ["India", "Australia", "United States"];
+
+            const filterCountry = data.filter(ele => pickCountries.includes(ele.name.common));
+
+
+            filterCountry.forEach(function(ele){
+                //created list items dynamicaaly , as we don't know in advance how many times we have to print 
+                const liTag = document.createElement('li');
+                liTag.textContent = `${ele.name.common} : ${ele.capital ? ele.capital[0] : "Doesnot exist"}`;
+                listHandle.appendChild(liTag);
+            });
+        }
+    </script>
+</body>
+</html> -->
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listing Countries</title>
+</head>
+<body>
+    <h1>Listing Countries</h1>
+    <h2>Total Countries: <span id="count">0</span></h2>
+    <ul id="list"></ul>
+
+    <script>
+        const countHandle = document.querySelector('#count');
+        const listHandle = document.querySelector('#list');
+
+        const xhr = new XMLHttpRequest();  // create new object
+        xhr.open("GET", "https://restcountries.com/v3.1/all?fields=name,capital,flags");
+        xhr.send();  //send the request to the server
+
+        xhr.onload = function(){  //fn gets called once the response has been received
+            const data = JSON.parse(xhr.responseText); //parse the data
+            console.log(data);
+
+            countHandle.textContent = data.length;
+
+            //clean-up code
+            listHandle.innerHTML = "";
+
+
+            //localeCompare() helps compare strings (compare two words like in a dictionary (A → Z).) properly in alphabetical order.
+            
+
+            // Sorting the country name from (A → Z)
+            data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+             
+            data.forEach(function(ele){
+                //created list items dynamicaaly , as we don't know in advance how many times we have to print 
+                const liTag = document.createElement('li');
+                //textContent only treats everything as text, so the <img> tag will not render as an image—it will just appear as text.Use innerHTML instead of textContent
+                liTag.innerHTML = `${ele.name.common} : ${ele.capital ? ele.capital[0] : "Doesn't Exist"} 
+                    <img src="${ele.flags.svg}" alt="Flag" width="40" height="20" style="vertical-align:middle">`;
+                listHandle.appendChild(liTag);
+            });
+
+        }
+    </script>
+</body>
+</html>
