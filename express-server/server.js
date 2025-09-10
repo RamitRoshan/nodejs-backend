@@ -5,8 +5,8 @@ const app = express();
 const port = 3030;
 
 // setup an express server, define a route "/" returns a welcome message
-// requestListener syntax
-// app.httpMethod(url, callback)
+// requestListener syntax..
+// app.httpMethod(url,callback)
 
 app.get("/", (req, res) => {
     res.status(200).send("Welcome to the website");

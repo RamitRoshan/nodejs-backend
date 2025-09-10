@@ -11,7 +11,7 @@
 
 ## Installation
 
-```bash
+```
 npm init -y      # create package.json (project setup)
 npm i express    # install express
 ```
