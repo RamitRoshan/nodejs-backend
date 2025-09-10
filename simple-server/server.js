@@ -1,16 +1,3 @@
-/* 
-for settinng server nodejs gives http
-
-request listener is used as a call back fn in backend (nodejs)
-
-backend: requestListener  :: frontend : eventListener (at the end of the days these are callback fns)
-
-Call back fn -why?
-function passes as an argument to another fn, to be executed at a later point in time.
-
-converting array to string
-*/
- 
 const http = require('http');
 const port = 3000;
 const server = http.createServer((request, response) => {  
