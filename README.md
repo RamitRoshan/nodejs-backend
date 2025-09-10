@@ -12,15 +12,18 @@ This repository contains my practice code, notes, and projects while learning **
 - Connecting Node.js with databases  
 
 ## 📂 Folder Structure  
-
+```
 backend/
 │
-├── basics/ # Core Node.js concepts
-├── http/ # Server and HTTP module practice
-├── express/ # Express.js practice
-├── projects/ # Mini backend projects
+├── countries-app/  
+├── employee-app/ 
+├── express-server/  
+├── Interview-que/  
+├── practice-code/  
+├── simple-server/  
+├── student-exam-server/  
 └── README.md
-
+```
 ## 🛠 Tech Stack
 
 Node.js
