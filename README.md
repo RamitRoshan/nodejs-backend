@@ -28,7 +28,7 @@ backend/
 
 Node.js
 
-Express.js (later)
+Express.js (currently learning)
 
 MongoDB (later)
 
