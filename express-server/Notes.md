@@ -1,6 +1,6 @@
 # Express.js Notes
 
-## What is Express?
+## What is Express ?
 - **Express.js** is a web framework built on top of **Node.js**.
 - It helps to keep backend code **modular (for every url , it will get different callback fn), structured, and easy to maintain**.
 - **NestJS** (another backend framework) is also built on top of Express.
@@ -16,11 +16,11 @@ npm init -y      # create package.json (project setup)
 npm i express    # install express
 ```
 
-### Where are packages installed?
+### Where are packages installed ?
 - Installed inside the node_modules folder.
 
 
-### What is Modular?
+### What is Modular ?
 - Modular code means breaking your program into small, independent parts (modules) instead of writing everything in one big file.
 
 - Each module (or function) handles only one job, making the code:
@@ -60,7 +60,7 @@ app.listen(port, () => {
 
 ```
 
-### Why modular is good?
+### Why modular is good ?
 - Instead of one huge function that decides what to do for every request,
 Express lets you separate logic per route.
 
