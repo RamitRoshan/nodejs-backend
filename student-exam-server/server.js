@@ -48,18 +48,46 @@ app.get("/students/:id", (req, res) => {
         //here === it will check datatype and values and parseInt convert string to number
         return ele.id === parseInt(id);
     });
-    if(student){
-        res.json(student);
-    } else {
-        res.status(404).json({});
+
+    //handling error first
+    if(!student){ // if the record is not found
+        return res.status(404).json({});
     }
-    
-    app.get("/results", (req, res) => {
-        const rollNumber = req.query.rollNumber;
-        res.send(rollNumber);
-    })
+    res.json(student);
+
+    // if(student){
+    //     res.json(student);
+    // } else {
+    //     res.status(404).json({});
+    // }
 });
 
+
+app.get("/results", (req, res) => {
+        //camelcase convention (rollNumber)
+        const rollNumber = req.query.rollNumber;
+        const studentResults = results.filter((ele) => {
+            return ele.rollNumber == rollNumber;
+        });
+        //edgecase= if its length is 0
+        // if(studentResults.length === 0){
+        //     res.status(404).json([]);
+        // }else{
+        //     res.json(studentResults);
+        // }
+
+        //handling error first
+        if(studentResults.length === 0){
+            return res.status(404).json([]);
+        }
+        res.json(studentResults);
+});
+
+//used to start the server 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
-})
+});
+
+
+
+// to run the code in the browser after starting the server, we use this: (http://localhost:3050/results?rollNumber=R003)

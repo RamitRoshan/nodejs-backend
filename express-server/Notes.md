@@ -62,8 +62,10 @@ app.listen(port, () => {
 
 ### Why modular is good ?
 - Instead of one huge function that decides what to do for every request,
-Express lets you separate logic per route.
+Express lets you separate logic per route(urL).
 
+
+- URL - Uniform Resource Locator
 
 
  
