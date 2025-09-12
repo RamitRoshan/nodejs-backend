@@ -53,7 +53,12 @@ app.get("/students/:id", (req, res) => {
     } else {
         res.status(404).json({});
     }
-})
+    
+    app.get("/results", (req, res) => {
+        const rollNumber = req.query.rollNumber;
+        res.send(rollNumber);
+    })
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
