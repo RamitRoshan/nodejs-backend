@@ -32,17 +32,35 @@ const results = [
   { rollNumber: "R004", subject: "Science", marks: 92 }
 ];
 
-//Static routes
+
+
+//finding POST /students (name and rollNumber)
+
+app.use(express.json());
+ 
+
 app.get("/students", (req, res) => {
     res.json(students);
 })
 
+app.post('/students', (req, res) => {
+    const student1 = req.body;
+    student1.id = Date.now();
+    students.push(student1);
+    res.status(201).json(student1);
+    console.log(student1);
+});
+
+//Static routes (fixed)
+// app.get("/students", (req, res) => {
+//     res.json(students);
+// })
+
 
 //req.params = help to extract named parameter(anything after colon (:) ) from url [e.g: GET /students/:id]
-
 //Dynamic routes
 app.get("/students/:id", (req, res) => {
-    const id = req.params.id;
+    const id = req.params.id;  //localhost:3050/students/3
     // here we used array find methods 
     const student = students.find((ele) => {
         //here === it will check datatype and values and parseInt convert string to number
@@ -54,12 +72,6 @@ app.get("/students/:id", (req, res) => {
         return res.status(404).json({});
     }
     res.json(student);
-
-    // if(student){
-    //     res.json(student);
-    // } else {
-    //     res.status(404).json({});
-    // }
 });
 
 
@@ -70,6 +82,7 @@ app.get("/results", (req, res) => {
             return ele.rollNumber == rollNumber;
         });
         //edgecase= if its length is 0
+
         // if(studentResults.length === 0){
         //     res.status(404).json([]);
         // }else{

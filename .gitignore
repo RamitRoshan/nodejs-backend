@@ -3,3 +3,7 @@ node_modules/
 student-exam-server/node_modules/
 
 express-server/node_modules/
+
+tasks-app/node_modules/
+
+product-management-app/node_modules/
