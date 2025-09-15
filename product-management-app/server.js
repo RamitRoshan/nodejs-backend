@@ -4,7 +4,7 @@ const port = 3333;
 
 
 /**
- * Methods of req (request)
+ * common req (request) properties, in Express.js
  * req.body, req.query, req.params, req.methods, req.url
 */
 

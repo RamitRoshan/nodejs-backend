@@ -4,7 +4,7 @@
     return array
     */
 function removeItem(arr, ele){
-    const index = arr.indexOf(ele);  //index of ele = 30
+    const index = arr.indexOf(ele);  //index of ele..
 
     if(index == -1){
         return 'element not found in the array';
@@ -22,6 +22,9 @@ console.log(removeItem([10,20,30,40,50], 30));   //[10,20,40,50]
 //     return arr.filter(item => item !== ele);
 // }
 // console.log(removeItem([10,20,30,40,50], 30));   //[10,20,40,50]
+
+
+
 
 
 
