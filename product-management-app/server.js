@@ -3,6 +3,12 @@ const app = express();
 const port = 3333;
 
 
+/**
+ * Methods of req (request)
+ * req.body, req.query, req.params, req.methods, req.url
+*/
+
+
 // enable configuration to parse incoming json
 // application level middleware + in built middleware
 app.use(express.json());
@@ -41,27 +47,35 @@ app.get("/products/:id", (req, res) => {
 });
 
 
-// // DELETE product by ID
-// app.delete("/products/:id", (req, res) => {
-//     const id = req.params.id;
+// DELETE product by ID
+app.delete('/products/:id', (req, res) => {
+    const id = req.params.id;
+    const index = productDB.findIndex(ele => ele.id == parseInt(id));
+    if(index == -1){
+        return res.status(404).json({});
+    }
+    const removeItem = productDB.splice(index, 1);
+    res.json(removeItem[0]);
+});
 
-//     const index = productDB.findIndex((ele) => ele.id.toString() === id);
 
-//     if (index === -1) {
-//         return res.status(404).json({ message: "product not found" });
-//     }
+//Updates a product’s details based on its ID.(PUT /products/:id)
+app.put('/products/:id', (req, res) => {
+    const id =  req.params.id;
+    const body = req.body;
 
-//     const deletedProduct = productDB.splice(index, 1); // removes the product
-//     res.json({ message: "product deleted successfully", product: deletedProduct[0] });
-
-//     console.log(index);
-// });
-
+    const product = productDB.find(ele => ele.id === parseInt(id));
+    //if product is not present(handling error first)
+    if(!product){
+        return res.status(404).json({message: "product not found"});
+    }
+    //if product is present
+    Object.assign(product, body);
+    res.json(product);
+});
 
 
 //used to start the server
-
-
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
