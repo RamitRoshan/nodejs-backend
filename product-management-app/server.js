@@ -16,6 +16,7 @@ app.use(express.json());
 
 // const productDB = [];
 
+//used  require('./data.json'); to connect json file with the server file
 const productDB = require('./data.json');
 
 
