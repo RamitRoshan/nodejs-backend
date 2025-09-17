@@ -15,7 +15,6 @@ const port = 3333;
 app.use(express.json());
 
 // const productDB = [];
-
 //used  require('./data.json'); to connect json file with the server file
 const productDB = require('./data.json');
 
@@ -103,9 +102,56 @@ app.get('/category-status', (req, res) => {
 // find minPrice, maxPrice and average
 app.get('/minmax-price', (req, res) => {
 
-    const price = productDB.map(p => p.price);
+    //edge cases 
+    if(productDB.length == 0){
+        return res.json({min:0, max:0, average: 0});
+    }
+    const prices = productDB.map(p => p.price);
+
+    // let max = prices[0];
+    // let min = prices[0];
+
+    let min = Infinity; //represent large number
+    let max = -Infinity;  //represent small number
     
-})
+
+    for(let price of prices){
+        if(price < min){
+            min = price;
+        }
+        if(price > max){
+            max = price;
+        }
+    }
+
+    const average = (min + max)/prices.length;
+    res.json({min, max, average});
+    
+});
+
+
+// // Find minPrice, maxPrice, and average
+// app.get('/minmax-price', (req, res) => {
+//     if (productDB.length === 0) {
+//         return res.json({ min: 0, max: 0, average: 0 });
+//     }
+
+//     const prices = productDB.map(p => p.price);
+
+//     let min = prices[0];
+//     let max = prices[0];
+//     let sum = 0;
+
+//     for (let price of prices) {
+//         if (price < min) min = price;
+//         if (price > max) max = price;
+//         sum += price;
+//     }
+
+//     const average = sum / prices.length;
+
+//     res.json({ min, max, average });
+// });
 
 
 
