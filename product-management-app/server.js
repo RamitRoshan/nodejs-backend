@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3333;
+ 
 
 
 /**
@@ -13,7 +14,10 @@ const port = 3333;
 // application level middleware + in built middleware
 app.use(express.json());
 
-const productDB = [];
+// const productDB = [];
+
+const productDB = require('./data.json');
+
 
 app.get('/products', (req, res) => {
     res.json(productDB);
@@ -75,7 +79,66 @@ app.put('/products/:id', (req, res) => {
 });
 
 
+//status of data (find in-each category how many products are there)
+//{ "Electronic": 3, "Sportswear":3, "home&office":2, "Stationary": 2} => return it as a response of the frontend
+app.get('/category-status', (req, res) => {
+    
+    const categoryCounts = productDB.reduce((acc, product) => {
+
+        // Get the category of the current product
+        const category = product.category;
+
+        // If the product has a category
+        if(category){
+            acc[category] = (acc[category] || 0) +1;
+        }
+        return acc;
+    }, {});
+
+    res.json(categoryCounts);
+});
+
+
+// find minPrice, maxPrice and average
+app.get('/minmax-price', (req, res) => {
+
+    const price = productDB.map(p => p.price);
+    
+})
+
+
+
+// // Route to calculate how many products are in each category
+// app.get('/category-status', (req, res) => {
+    
+//     // Use reduce to go through every product in productDB
+//     // acc (accumulator) will start as an empty object {}
+//     // product is the current item in the array
+//     const categoryCounts = productDB.reduce((acc, product) => {
+        
+//         // Get the category of the current product
+//         const category = product.category;
+
+//         // If the product has a category
+//         if (category) {
+//             // If acc[category] exists, add 1
+//             // If it doesn’t exist yet, treat it as 0 and then add 1
+//             acc[category] = (acc[category] || 0) + 1;
+//         }
+
+//         // Return the updated accumulator object to the next iteration
+//         return acc;
+
+//     }, {}); // {} is the initial value of the accumulator
+
+//     // Send the final categoryCounts object as a JSON response
+//     res.json(categoryCounts);
+// });
+
+
 //used to start the server
+
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

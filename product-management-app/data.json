@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Mouse",
+    "price": 25.99,
+    "category": "Electronics"
+  },
+  {
+    "id": 2,
+    "name": "Bluetooth Keyboard",
+    "price": 45.50,
+    "category": "Electronics"
+  },
+  {
+    "id": 3,
+    "name": "Running Shoes",
+    "price": 75.00,
+    "category": "Sportswear"
+  },
+  {
+    "id": 4,
+    "name": "Yoga Mat",
+    "price": 20.00,
+    "category": "Sportswear"
+  },
+  {
+    "id": 5,
+    "name": "Water Bottle",
+    "price": 12.99,
+    "category": "Sportswear"
+  },
+  {
+    "id": 6,
+    "name": "Desk Lamp",
+    "price": 30.25,
+    "category": "Home & Office"
+  },
+  {
+    "id": 7,
+    "name": "Notebook",
+    "price": 5.50,
+    "category": "Stationery"
+  },
+  {
+    "id": 8,
+    "name": "Ballpoint Pens (Pack of 10)",
+    "price": 4.20,
+    "category": "Stationery"
+  },
+  {
+    "id": 9,
+    "name": "Smartphone Stand",
+    "price": 15.75,
+    "category": "Electronics"
+  },
+  {
+    "id": 10,
+    "name": "Office Chair",
+    "price": 120.00,
+    "category": "Home & Office"
+  }
+]
