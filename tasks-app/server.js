@@ -1,6 +1,6 @@
 const express = require('express');
 // Import MongoClient class from mongodb package (use to connect mongodb)
-const {MongoClient} = require('mongodb');
+const {MongoClient, ObjectId} = require('mongodb');
 
 /*
 es6 object destructuring - helps you to extract properties from an object and makes it
@@ -44,15 +44,19 @@ async function configureDB() {
 configureDB(); 
 
 
-//how to create a record in DB
+//# how to create a record in DB
 app.post('/tasks', async(req,res) => {
+    // req.body → contains data sent from frontend (must use express.json() middleware)
     const body = req.body;   //const {body} = req;
     try{
+        // insertOne → adds a single document into "tasks" collection
         const task = await db.collection('tasks').insertOne(body);
         console.log(task); //{acknowledged: true, insertedId: new ObjectId('68cd04cf511078425958bc6c')}
+         
+        // Respond with newly created task
         res.status(201).json({
-            _id: task.insertedId,
-            ...body
+            _id: task.insertedId,  // MongoDB auto-generated ID
+            ...body  // spread operator → rest of the data
         });
     } catch(err){
         console.log(err);
@@ -61,18 +65,105 @@ app.post('/tasks', async(req,res) => {
 });
 
  
-// list/READ all tasks (Fetch from DB)
+// // # list all tasks/READ all tasks (Fetch from DB)
+// app.get('/tasks', async(req, res) => {
+//     try{
+//         // find() → fetch all documents
+//         // toArray() → converts cursor into actual JS array
+//         const tasks = await db.collection('tasks').find().toArray();
+
+//         // Send tasks back to client
+//         res.json(tasks);
+//     } catch(err){
+//         console.log(err);
+//         res.status(500).json({error: 'Something went wrong!!!'})
+//     }
+// });
+
+// # list all tasks/READ all tasks (Fetch from DB)
 app.get('/tasks', async(req, res) => {
-    try{
-        // find() → fetch all documents
-        // toArray() → converts cursor into actual JS array
-        const tasks = await db.collection('tasks').find().toArray();
-        
-        // Send tasks back to client
+
+    try {
+        const { status } = req.query; // ✅ get status from query (eg: /tasks?status=pending)
+        let tasks;
+
+        if (status === "pending") {
+            tasks = await db.collection('tasks').find({ status: "pending" }).toArray();
+        } else if (status === "success") {
+            tasks = await db.collection('tasks').find({ status: "success" }).toArray();
+        } else {
+            // if no status passed → fetch all
+            tasks = await db.collection('tasks').find().toArray();
+        }
+
         res.json(tasks);
+
     } catch(err){
         console.log(err);
         res.status(500).json({error: 'Something went wrong!!!'})
+    }
+});
+
+
+// Find one task by ID
+app.get('/tasks/:id', async (req, res) => {
+    // Extract id from request params using destructuring
+    //const id = req.params.id;
+    //With destructuring (ES6)
+    const { id } = req.params;  
+    
+    try {
+        // Find document in MongoDB by converting string id → ObjectId
+        const task = await db.collection('tasks').findOne({ _id: new ObjectId(id) });
+        
+        // If no task found, return 404 with empty object
+        if (!task) {
+            return res.status(404).json({});
+        }
+
+        // If task found, send it back
+        res.json(task);
+
+    } catch (err) {
+        console.log(err);
+        // Handle any errors
+        res.status(500).json({ error: 'Something went wrong!!!' });
+    }
+});
+
+
+
+//update the task
+app.put('/tasks/:id', async(req, res) => {
+    const {id} = req.params;  // <= is destructuring of, const id = req.params.id
+    const {body} = req; //const body = req.body
+    try{
+        // Update a task where _id = id
+        const task = await db.collection('tasks').updateOne({_id: new ObjectId(id)}, { $set: body });  //filter by id, set the new value
+
+        // return result object (acknowledged, matchedCount, modifiedCount)
+        res.json(task);
+
+    } catch(err){
+        console.log(err);
+        res.status(500).json({error: 'Something went wrong!!!'});
+    }
+});
+
+
+//deleting a task by ID
+app.delete('/tasks/:id', async(req, res) => {
+    //With destructuring (ES6)
+    const {id} = req.params; // extract id from URL
+    
+    try{
+        // Delete one task where _id = id
+        const task = await db.collection('tasks').deleteOne({_id: new ObjectId(id) });
+        // Send deletion result
+        res.json(task);
+    } catch(err){
+        console.log(err);
+        res.status(500).json({error: 'Something went wrong!!!'});
     }
 });
 
@@ -82,37 +173,37 @@ app.get('/tasks', async(req, res) => {
 //GET /tasks
    // return 'list tasks api'
 
-app.get('/tasks', (req, res) => {
-  res.send('list tasks api');
-});
+// app.get('/tasks', (req, res) => {
+//   res.send('list tasks api');
+// });
 
-// POST /tasks
-   // return 'create task api'
-app.post('/tasks', (req, res) => {
-    const body = req.body;
-    res.send('create task api');
-});
+// // POST /tasks
+//    // return 'create task api'
+// app.post('/tasks', (req, res) => {
+//     const body = req.body;
+//     res.send('create task api');
+// });
 
-// GET /tasks/:id
-   // return 'single task api'
+// // GET /tasks/:id
+//    // return 'single task api'
 
-app.get('/tasks/:id', (req,res) => {
-    res.send(`single task api with id: ${req.params.id}`);
-});
+// app.get('/tasks/:id', (req,res) => {
+//     res.send(`single task api with id: ${req.params.id}`);
+// });
 
-//PUT /tasks/:id
-   // return 'update task api'
+// //PUT /tasks/:id
+//    // return 'update task api'
 
-app.put('/tasks/:id', (req, res) => {
-    res.send(`update task api with id: ${req.params.id}`);
-});
+// app.put('/tasks/:id', (req, res) => {
+//     res.send(`update task api with id: ${req.params.id}`);
+// });
 
-// Delete tasks/:id
-   // return 'remove task api'
+// // Delete tasks/:id
+//    // return 'remove task api'
 
-app.delete('/tasks/:id', (req, res) => {
-    res.send(`remove task api with id: ${req.params.id} `);
-});
+// app.delete('/tasks/:id', (req, res) => {
+//     res.send(`remove task api with id: ${req.params.id} `);
+// });
 
 
 //use to start the server
