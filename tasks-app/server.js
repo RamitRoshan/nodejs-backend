@@ -27,6 +27,7 @@ const client = new MongoClient('mongodb://127.0.0.1:27017');
 // (We use let so that we can assign it later after connection)
 //declare let db outside, so that we can access it from anywhere
 let db;
+
 // Step 3: Create async function to configure and connect database
 async function configureDB() {
     try{
