@@ -18,6 +18,7 @@ const port = 3075;
 // Middleware
 app.use(express.json());
 
+
 //# establishing connection to database(mongodb)
 
 // Step 1: Define connection URL → here MongoDB is running locally on default port 27017
@@ -28,14 +29,14 @@ const client = new MongoClient('mongodb://127.0.0.1:27017');
 //declare let db outside, so that we can access it from anywhere
 let db;
 
-// Step 3: Create async function to configure and connect database
+// Step 3: Create async function to configure and connect database and it has 2 cond. succcess and failure
 async function configureDB() {
     try{
         // Try connecting to MongoDB software (Mongo Daemon must be running)
         await client.connect(); //connect to mongodb software
         // Step 4: Choose (or create if not exist) a database named "task-app-july25"
         db = client.db('task-app-july25');  //create a project database
-        console.log('connected to db');
+        console.log('connected to db', db.databaseName);
     } catch(err){
         // If something goes wrong (wrong URL, MongoDB not running, etc.)
         console.log('error connecting to db', err.message);
@@ -122,7 +123,7 @@ app.get('/tasks/:id', async (req, res) => {
             return res.status(404).json({});
         }
 
-        // If task found, send it back
+        // If task found, send it back particular task
         res.json(task);
 
     } catch (err) {
