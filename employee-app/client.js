@@ -3,14 +3,14 @@ window.onload = function(){
     // function handleClick(){  // eventListener / eventHandler
             
 
-            //## Alternative ways of targetting element in web page except than .getElementById
+            //# Alternative ways of targetting element in web page except than .getElementById
 
             // const countHandle = document.getElementById('count');
             const countHandle = document.querySelector('#count');
             // const listHandle = document.getElementById('list');
             const listHandle = document.querySelector('#list');
 
-            // //clean-up code
+            //clean-up code
             // listHandle.innerHTML = "";
             
             //AJAX → new XMLHttpRequest() → open → send
