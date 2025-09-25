@@ -19,7 +19,7 @@ const server = http.createServer((request, response) => {
             { id: 2, name: 'roshan'}
         ];
         //convert objects to string (JSON.stringify)
-        //hyper text transfer protocol
+        //hyper text transfer protocol (http)
         response.end(JSON.stringify(users));
     } else{
         response.end('page not found');

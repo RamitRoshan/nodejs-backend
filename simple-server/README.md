@@ -1,4 +1,4 @@
-# Q). built a server using only nodejs 
+# Q. built a server using only nodejs 
 
 - For settinng server nodejs gives http
 
