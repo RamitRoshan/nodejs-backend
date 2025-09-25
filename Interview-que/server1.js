@@ -13,7 +13,7 @@ const server = http.createServer((request, response) => {
         response.writeHead(200, {'Content-Type': 'text/plain'})
         response.end("Welcome to the Node.js HTTP Server!!")
 
-    } else if(request.url === "/items" && request.method === "GET"){
+    } else if(request.url === "/items" && request.method === "GET"){ 
         response.writeHead(200, {"Content-Type": "application/json"});
         response.end(JSON.stringify(items));
 
