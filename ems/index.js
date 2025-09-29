@@ -102,6 +102,26 @@ app.get('/api/employees/:empId', async(req, res) => {
     }
 });
 
+
+//Update an existing employee
+app.put('/api/employees/:empId', async(req, res) => {
+    const empId = req.params.empId;
+    const body = req.body;
+    try{
+        const emp = await Employee.findByIdAndUpdate(empId, body, {new:true});
+
+        //error handling 1st
+        if(!emp){
+            return res.status(404).json({});
+        }
+        res.json(emp);
+
+    }catch(err){
+        console.log(err);
+        res.status(500).json({error: 'Something went wrong!!'});
+    }
+});
+
 //start the server
 app.listen(port, () => {
     console.log(`EMS server is running on port number ${port}`);
