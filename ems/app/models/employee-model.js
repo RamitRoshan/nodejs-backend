@@ -6,9 +6,10 @@ const employeeSchema = new mongoose.Schema({
     email: String,
     mobile: String
 
-}, {timestamps: true})   //it works as required:true -> for all, we dont have to write individually
+}, {timestamps: true})   
+//it works as required:true -> for all, we dont have to write individually(using required: true or false)
 
-//Create a Model
+//Creating a Model
 const Employee = mongoose.model('Employee', employeeSchema);
 
 module.exports = Employee;
