@@ -10,6 +10,10 @@ This repository contains my practice code, notes, and projects while learning **
 - Express.js fundamentals  
 - REST APIs  
 - Connecting Node.js with databases  
+- Connecting Mongoose as a database with MongoDB
+- How export and import works in Backend
+- MVC Architecture
+- Joi
 
 ## 📂 Folder Structure  
 ```

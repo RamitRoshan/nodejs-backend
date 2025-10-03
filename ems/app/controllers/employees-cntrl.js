@@ -1,4 +1,5 @@
 const Employee = require('../models/employee-model');
+const {employeeValidationSchema} = require('../validators/employee-validator');
 const employeesCntrl = {};
 
 //creating list methods inside employees controler
@@ -9,9 +10,9 @@ employeesCntrl.list = async(req, res) => {
 
     } catch(err){
         console.log(err);
-        res.status(500).json({error: 'something went wrong!!!'});
+        res.status(500).json({error: 'something went wrong!!!!'});
     }
-}
+};
 
 
 //retrieving a single employee
@@ -32,29 +33,38 @@ employeesCntrl.show = async(req, res) => {
         console.log(err);
         res.status(500).json({error: 'Something went wrong!!!'});
     }
-}
+};
 
 //Creating a new employee
 employeesCntrl.create = async(req, res) => {
-    const body = req.body;  //read the body
+    const body = req.body;  //read the body (and datatype of body is object)
+
+    const{error, value} = employeeValidationSchema.validate(body, {abortEarly: false});
+    if(error){
+        return res.status(400).json(error);
+    }
     try{
         //then, create a object
-        const emp = new Employee(body);
+        const emp = new Employee(value);
         //save the object
         await emp.save();
         res.status(201).json(emp);
 
     }catch(err){
         console.log(err);
-        res.status(400).json(err);
+        res.status(400).json({error: 'something went wrong!!!'});
     }
-}
+};
 
 
 //Updating an existing employee
 employeesCntrl.update = async(req, res) => {
     const empId = req.params.empId;
     const body = req.body;
+    const{error, value} = employeeValidationSchema.validate(body, {abortEarly: false});
+    if(error){
+        return res.status(400).json(error);
+    }
     try{
         const emp = await Employee.findByIdAndUpdate(empId, body, {new:true});
 
