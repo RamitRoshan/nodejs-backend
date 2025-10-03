@@ -68,7 +68,25 @@ employeesCntrl.update = async(req, res) => {
         console.log(err);
         res.status(500).json({error: 'Something went wrong!!'});
     }
-}
+};
+
+
+//Delete an employee
+employeesCntrl.remove = async(req, res) => {
+    const empId = req.params.empId;
+    try{
+        const emp = await Employee.findByIdAndDelete(empId);
+
+        //error handling
+        if(!emp){
+            return res.status(404).json({});
+        }
+        res.json(emp);
+    }catch(err){
+        console.log(err);
+        res.status(500).json({error: 'Something went wrong!!'});
+    }
+};
 
 
 module.exports = employeesCntrl;

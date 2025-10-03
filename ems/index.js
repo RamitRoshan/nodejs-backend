@@ -23,6 +23,9 @@ app.post('/api/employees', employeesCntrl.create);
 //Update an existing employee
 app.put('/api/employees/:empId', employeesCntrl.update);
 
+//Delete an employee
+app.delete('/api/employees/:empId', employeesCntrl.remove);
+
 
 //start the server
 app.listen(port, () => {
