@@ -6,7 +6,7 @@ const employeeSchema = new mongoose.Schema({
     email: String,
     mobile: String
 
-}, {timestamps: true})   
+}, {timestamps: true})   //wheneevr record is created whenever record is created(chck once)
 //it works as required:true -> for all, we dont have to write individually(using required: true or false)
 
 //Creating a Model
