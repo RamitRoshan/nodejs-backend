@@ -1,14 +1,33 @@
 const express = require('express');
 const configureDB = require('./config/db');  // import it from config/db
 const employeesCntrl = require('./app/controllers/employees-cntrl');
+const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
+const morgan = require('morgan');
+
 const app = express();
 const port = 4040;
 
 //middle-ware
 app.use(express.json());
-
+app.use(cors());
+ 
 configureDB();
 
+ 
+//application level + 3rd party middleware
+app.use(morgan('common', {
+  stream: fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+}));
+
+
+
+//this middleware fn(app.use()) will use/call first then any of the req handlers call
+// app.use((req, res, next) => {
+//     console.log(`${req.method} -${req.url} - ${req.ip} - ${new Date()}`);
+//     next();
+// });
 
 //Retrieve all employees
 app.get('/api/employees', employeesCntrl.list);
