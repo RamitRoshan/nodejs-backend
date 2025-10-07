@@ -7,3 +7,6 @@ express-server/node_modules/
 tasks-app/node_modules/
 
 product-management-app/node_modules/
+
+#igonoring the .env file of ems
+ems/.env

@@ -1,18 +1,23 @@
+require('dotenv').config(); 
+//loads environment variables from a .env file into process.env
 const express = require('express');
 const configureDB = require('./config/db');  // import it from config/db
 const employeesCntrl = require('./app/controllers/employees-cntrl');
+const authenticateUser = require('./app/middlewares/authenticate')
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const morgan = require('morgan');
 
 const app = express();
-const port = 4040;
+//if this port present then use it otherwise use default port 5000
+const port = process.env.PORT || 5000;
+// const port = 4040;
 
 //middle-ware
 app.use(express.json());
 app.use(cors());
- 
+
 configureDB();
 
  
@@ -37,7 +42,8 @@ app.get('/api/employees/:empId', employeesCntrl.show);
 
 
 //Create a new employee
-app.post('/api/employees', employeesCntrl.create);
+// app.post('/api/employees', employeesCntrl.create);
+app.post('/api/employees',authenticateUser, employeesCntrl.create);
 
 //Update an existing employee
 app.put('/api/employees/:empId', employeesCntrl.update);
