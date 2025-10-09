@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const morgan = require('morgan');
 const configureDB = require('./config/db');
+const usersCltr = require('./app/controllers/users-controller');
 require('dotenv').config();
 const port = process.env.PORT || 5000;
 const app = express();
@@ -19,7 +20,10 @@ app.use(morgan('common', {
 
 app.get('/', (req, res) => {
     res.send("Hello Backend");
-})
+});
+
+app.post('/api/users', usersCltr.register);
+
 
 //start the server
 app.listen(port, () => {
