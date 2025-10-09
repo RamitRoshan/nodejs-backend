@@ -1,5 +1,7 @@
 node_modules/
 
+.env
+
 student-exam-server/node_modules/
 
 express-server/node_modules/
@@ -7,6 +9,8 @@ express-server/node_modules/
 tasks-app/node_modules/
 
 product-management-app/node_modules/
+
+user-auth-backend/node_modules
 
 #igonoring the .env file of ems
 ems/.env
