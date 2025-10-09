@@ -14,3 +14,5 @@ user-auth-backend/node_modules
 
 #igonoring the .env file of ems
 ems/.env
+
+contact-form-application/.env
