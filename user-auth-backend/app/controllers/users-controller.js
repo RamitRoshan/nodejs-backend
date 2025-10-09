@@ -1,5 +1,6 @@
 const User = require('../models/user-model');
 const {userRegisterValidationSchema}  = require('../validators/user-validator');
+const bcryptjs = require('bcryptjs');
 
 const usersCltr = {};
 
@@ -10,7 +11,7 @@ usersCltr.register = async(req, res) => {
 
     const{error, value} = userRegisterValidationSchema.validate(body, {abortEarly: false});
 
-    if(error){
+    if(error){2
         return res.status(400).json({error:error.details.map(err => err.message)});
     }
     
@@ -22,6 +23,9 @@ usersCltr.register = async(req, res) => {
 
         }else{
             const user = new User(value);
+            const salt = await bcryptjs.genSalt();
+            const hashPassword = await bcryptjs.hash(value.password, salt);
+            user.password = hashPassword;
             await user.save();
             res.status(201).json(user);
             
