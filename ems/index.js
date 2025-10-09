@@ -5,6 +5,7 @@ const configureDB = require('./config/db');  // import it from config/db
 const employeesCntrl = require('./app/controllers/employees-cntrl');
 const authenticateUser = require('./app/middlewares/authenticate')
 const cors = require('cors');
+//all three are required to import for morgan
 const fs = require('fs');
 const path = require('path');
 const morgan = require('morgan');
