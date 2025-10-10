@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form Application</title>
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Contact Form Application</h1>
+    <form id="contactForm">
+        <h2>Contact Form Application</h2>
+        <input type="text" id="name" placeholder="Enter Your Name" required>
+        <input type="email" id="email" placeholder="Enter Your Email" required>
+        <input type="text" id="mobile" placeholder="Enter Your Mobile Number" required>
+        <textarea id="message" rows="5" placeholder="Enter Your Message" required></textarea>
+        <button type="submit">Submit</button>
+        <div class="message" id="responseMessage"></div>
+    </form>
+
     <script src="./index.js"></script>
+
 </body>
 </html>
