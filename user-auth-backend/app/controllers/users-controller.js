@@ -63,7 +63,7 @@ usersCltr.login = async(req, res) => {
         return res.status(400).json({error: 'invalid password'});
     }
 
-    
+
     //generate a jwt and send the jwt
     const tokenData = {userId: userPresent._id}
     const token = jwt.sign(tokenData, process.env.JWT_SECRET, {expiresIn: '7d'});  //7days
@@ -73,6 +73,7 @@ usersCltr.login = async(req, res) => {
 
 
 module.exports = usersCltr;
+
 
 
 /*
