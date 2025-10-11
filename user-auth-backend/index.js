@@ -24,6 +24,9 @@ app.get('/', (req, res) => {
 
 app.post('/api/users', usersCltr.register);
 
+app.post('/api/users/login', usersCltr.login);
+
+
 
 //start the server
 app.listen(port, () => {

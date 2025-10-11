@@ -32,7 +32,7 @@ async function loginUser(password) {
 loginUser('secret123');
 
 /**
- * Notes
+* Notes
 Summary for notes:
 
 bcryptjs.hash(password, salt) → Manually hashes password using salt.
