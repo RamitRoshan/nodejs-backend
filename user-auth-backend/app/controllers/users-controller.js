@@ -11,10 +11,11 @@ usersCltr.register = async(req, res) => {
 
     const{error, value} = userRegisterValidationSchema.validate(body, {abortEarly: false});
 
-    if(error){2
+    if(error){
         return res.status(400).json({error:error.details.map(err => err.message)});
     }
     
+    //check user objest is present
     try{
         const userPresentWithEmail = await User.findOne({email:value.email});
 
@@ -35,6 +36,9 @@ usersCltr.register = async(req, res) => {
         res.status(500).json({error: 'something went wrong'});
     }
 }
+
+
+
 module.exports = usersCltr;
 
 
