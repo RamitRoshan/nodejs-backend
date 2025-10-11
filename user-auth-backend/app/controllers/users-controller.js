@@ -37,6 +37,10 @@ usersCltr.register = async(req, res) => {
     }
 }
 
+//--- user login ---
+usersCltr.login
+
+
 
 
 module.exports = usersCltr;
