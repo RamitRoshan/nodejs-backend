@@ -50,4 +50,4 @@ MongoDB (Mongoose)
 To strengthen my backend development skills using Node.js and prepare for building real-world applications.
 
 ## 🚀 Note: 
-Stay connected! I’ll be updating this repo daily with everything I learn in backend development. Follow along as I explore new concepts, tools, and projects.
+Stay connected! I’ll be updating this repo daily with everything I learn in backend development. **Follow along as I explore new concepts, tools, and projects.**

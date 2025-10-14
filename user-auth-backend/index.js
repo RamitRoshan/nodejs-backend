@@ -5,6 +5,7 @@ const path = require('path');
 const morgan = require('morgan');
 const configureDB = require('./config/db');
 const usersCltr = require('./app/controllers/users-controller');
+const authenticateUser = require('./app/middlewares/authenticate');
 require('dotenv').config();
 const port = process.env.PORT || 5000;
 const app = express();
@@ -25,6 +26,11 @@ app.get('/', (req, res) => {
 app.post('/api/users', usersCltr.register);
 
 app.post('/api/users/login', usersCltr.login);
+
+// to access account info, first check if the user is logged in 
+//verify the token
+//account details of users
+app.get('/api/users/account', authenticateUser, usersCltr.account);
 
 
 

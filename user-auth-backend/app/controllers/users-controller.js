@@ -10,6 +10,8 @@ const usersCltr = {};
 usersCltr.register = async(req, res) => {
     const body = req.body;
 
+    //we want all validation to pass, like uf we don't write abortearly the if one validatin fails
+    //then it will stops working
     const{error, value} = userRegisterValidationSchema.validate(body, {abortEarly: false});
 
     if(error){
@@ -49,13 +51,14 @@ usersCltr.login = async(req, res) => {
     if(error){
         return res.status(400).json({error:error.details.map(err => err.message)});
     }
-    //check email is present
+    //check user/email is present
     const userPresent = await User.findOne({email: value.email});
     
     //handling error 1st(if user is not present)
     if(!userPresent){
         return res.status(400).json({error: 'invalid email'});
     }
+    //in case email is present
     const isPasswordMatch = await bcryptjs.compare(value.password, userPresent.password);
 
     //if passwords does not match with value and userpresent
@@ -71,6 +74,15 @@ usersCltr.login = async(req, res) => {
 }
 
 
+usersCltr.account = async(req, res) => {
+    try{
+        const user = await User.findById(req.userId).select('-password'); //it will give the o/p without password (-), for security purpose
+        res.json(user);
+    }catch(err){
+        console.log(err);
+        res.status(500).json({error: "Something went wrong"});
+    }
+}
 
 module.exports = usersCltr;
 
