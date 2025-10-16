@@ -43,3 +43,5 @@
 ::1 - - [14/Oct/2025:07:27:06 +0000] "POST /api/users/login HTTP/1.1" 200 188
 ::1 - - [14/Oct/2025:07:27:27 +0000] "GET /api/users/account HTTP/1.1" 200 242
 ::1 - - [14/Oct/2025:07:34:41 +0000] "GET /api/users/account HTTP/1.1" 200 168
+::1 - - [16/Oct/2025:07:24:09 +0000] "POST /api/users HTTP/1.1" 400 64
+::1 - - [16/Oct/2025:07:24:36 +0000] "POST /api/notes HTTP/1.1" 401 30

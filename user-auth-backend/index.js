@@ -5,6 +5,7 @@ const path = require('path');
 const morgan = require('morgan');
 const configureDB = require('./config/db');
 const usersCltr = require('./app/controllers/users-controller');
+const notesCltr = require('./app/controllers/notes-controller');
 const authenticateUser = require('./app/middlewares/authenticate');
 require('dotenv').config();
 const port = process.env.PORT || 5000;
@@ -32,6 +33,17 @@ app.post('/api/users/login', usersCltr.login);
 //account details of users
 app.get('/api/users/account', authenticateUser, usersCltr.account);
 
+
+// Notes routes
+
+//Retrieve all notes
+app.get()
+// All notes routes require user to be authenticated
+app.post('/api/notes', authenticateUser, notesCltr.create);     // create note
+app.get('/api/notes', authenticateUser, notesCltr.list);        // list all notes
+app.get('/api/notes/:id', authenticateUser, notesCltr.get);     // get single note
+app.put('/api/notes/:id', authenticateUser, notesCltr.update);  // update note
+app.delete('/api/notes/:empId', notesCltr.remove); // delete note
 
 
 //start the server
