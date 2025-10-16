@@ -17,6 +17,8 @@ app.post('/api/analyze', (req, res) => {
 
     //handling error 1st
     if(!numbers){
+        //used return to stops the execution of the route handler.
+        //it ensures that once an error response is sent, no further code runs.
         return res.status(400).json({ error: "numbers is required"});
     }
 
