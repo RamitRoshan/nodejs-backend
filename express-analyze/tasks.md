@@ -74,3 +74,18 @@
 #### Bonus (Optional)
 	•	Add logging middleware to print the request method and URL.
 	•	Handle empty arrays gracefully (e.g., return a 400 error with a message like "Array cannot be empty").
+
+
+
+```
+
+Implementaion on postman: 
+ http://localhost:3000/api/analyze
+
+ choose body -> raw -> json
+
+ {
+  "numbers": [10, 20, 30, 40, 50]
+ }
+    
+```
