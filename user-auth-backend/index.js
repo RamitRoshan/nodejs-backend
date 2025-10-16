@@ -37,13 +37,16 @@ app.get('/api/users/account', authenticateUser, usersCltr.account);
 // Notes routes
 
 //Retrieve all notes
-app.get()
-// All notes routes require user to be authenticated
-app.post('/api/notes', authenticateUser, notesCltr.create);     // create note
-app.get('/api/notes', authenticateUser, notesCltr.list);        // list all notes
-app.get('/api/notes/:id', authenticateUser, notesCltr.get);     // get single note
-app.put('/api/notes/:id', authenticateUser, notesCltr.update);  // update note
-app.delete('/api/notes/:empId', notesCltr.remove); // delete note
+app.get('/api/notes', authenticateUser, notesCltr.list);
+//Retrieve a single notes
+app.get('./api/notes/:empId', notesCltr.show);
+//create a new notes
+app.post('./api/notes', authenticateUser, notesCltr.create);
+//update an existing notes
+app.put('./api/notes/:empId', notesCltr.update);
+//delete an notes
+app.delete('/api/notes/:empId', notesCltr.remove);
+ 
 
 
 //start the server
