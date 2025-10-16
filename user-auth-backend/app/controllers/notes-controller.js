@@ -18,13 +18,13 @@ notesCltr.list = async (req, res) => {
 };
 
 notesCltr.show = async(req, res) => {
-    const empId = req.params.empId;
+    const id = req.params.id;
     try{
-        const notes = await Note.findById(empId);
-        if(!notes){
+        const note = await Note.findById(id);
+        if(!note){
             return res.status(404).json({});
         }
-        res.json(notes);
+        res.json(note);
 
     }catch(err){
         console.error(err);
@@ -48,10 +48,10 @@ notesCltr.create = async (req, res) => {
 
 //Update a note by ID
 notesCltr.update = async (req, res) => {
-    const empId = req.params.empId;
+    const id = req.params.id;
     const body = req.body;
     try {
-        const note = await Note.findByIdAndUpdate(empId, body, {new:true});
+        const note = await Note.findByIdAndUpdate(id, body, {new:true});
         if (!note) {
             return res.status(404).json({});
         }
@@ -65,12 +65,12 @@ notesCltr.update = async (req, res) => {
 
 //Delete a note by ID
 notesCltr.remove = async (req, res) => {
-    const empId = req.params.empId;
-    const body = req.body;
+    const id = req.params.id;
+    // const body = req.body;
     try {
-        const note = await Note.findByIdAndDelete(empId);
+        const note = await Note.findByIdAndDelete(id);
         if (!note) {
-            return res.status(404).json({});
+            return res.status(404).json({error: 'Note not found'});
         }
 
         res.json(note);

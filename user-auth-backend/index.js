@@ -39,13 +39,13 @@ app.get('/api/users/account', authenticateUser, usersCltr.account);
 //Retrieve all notes
 app.get('/api/notes', authenticateUser, notesCltr.list);
 //Retrieve a single notes
-app.get('./api/notes/:empId', notesCltr.show);
+app.get('/api/notes/:id', notesCltr.show);
 //create a new notes
-app.post('./api/notes', authenticateUser, notesCltr.create);
+app.post('/api/notes', authenticateUser, notesCltr.create);
 //update an existing notes
-app.put('./api/notes/:empId', notesCltr.update);
+app.put('/api/notes/:id', notesCltr.update);
 //delete an notes
-app.delete('/api/notes/:empId', notesCltr.remove);
+app.delete('/api/notes/:id', notesCltr.remove);
  
 
 
