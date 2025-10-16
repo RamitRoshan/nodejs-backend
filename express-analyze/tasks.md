@@ -72,3 +72,10 @@ Response:
 Bonus (Optional)
 	•	Add logging middleware to print the request method and URL.
 	•	Handle empty arrays gracefully (e.g., return a 400 error with a message like "Array cannot be empty").
+
+
+
+
+       // if (!numbers.every(num => typeof num === 'number' && !isNaN(num))) {
+    //     return res.status(400).json({ error: "All elements must be valid numbers" });
+    // }
