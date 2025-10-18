@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
     res.send("Hello Backend");
 });
 
-app.post('/api/users', usersCltr.register);
+app.post('/api/users/register', usersCltr.register);
 
 app.post('/api/users/login', usersCltr.login);
 
