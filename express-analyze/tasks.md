@@ -64,11 +64,11 @@
 
   - Response:
 
-    {
-      "min": 4,
-      "max": 42,
-      "average": 18
-    }
+        {
+          "min": 4,
+          "max": 42,
+          "average": 18
+        }
 
 
 #### Bonus (Optional)
@@ -89,3 +89,5 @@ Implementaion on postman:
  }
     
 ```
+
+Try adding joi validation here ...

@@ -18,9 +18,9 @@ notesCltr.list = async (req, res) => {
 };
 
 notesCltr.show = async(req, res) => {
-    const id = req.params.id;
+    const noteId = req.params.noteId;
     try{
-        const note = await Note.findById(id);
+        const note = await Note.findOne({_id: noteId, user: req.userId});
         if(!note){
             return res.status(404).json({});
         }
@@ -48,10 +48,10 @@ notesCltr.create = async (req, res) => {
 
 //Update a note by ID
 notesCltr.update = async (req, res) => {
-    const id = req.params.id;
+    const noteId = req.params.noteId;
     const body = req.body;
     try {
-        const note = await Note.findByIdAndUpdate(id, body, {new:true});
+        const note = await Note.findOneAndUpdate({_id: noteId, user: req.userId}, body, {new:true});
         if (!note) {
             return res.status(404).json({});
         }
@@ -65,10 +65,10 @@ notesCltr.update = async (req, res) => {
 
 //Delete a note by ID
 notesCltr.remove = async (req, res) => {
-    const id = req.params.id;
+    const noteId = req.params.noteId;
     // const body = req.body;
     try {
-        const note = await Note.findByIdAndDelete(id);
+        const note = await Note.findOneAndDelete({_id: noteId, user: req.userId});
         if (!note) {
             return res.status(404).json({error: 'Note not found'});
         }
