@@ -10,7 +10,7 @@ const usersCltr = {};
 usersCltr.register = async(req, res) => {
     const body = req.body;
 
-    //we want all validation to pass, like uf we don't write abortearly the if one validatin fails
+    //we want all validation to pass, like if we don't write abort early the if one validatin fails
     //then it will stops working
     const{error, value} = userRegisterValidationSchema.validate(body, {abortEarly: false});
 
