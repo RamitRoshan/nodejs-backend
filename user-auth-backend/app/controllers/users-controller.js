@@ -30,6 +30,13 @@ usersCltr.register = async(req, res) => {
             const salt = await bcryptjs.genSalt();
             const hashPassword = await bcryptjs.hash(value.password, salt);
             user.password = hashPassword;
+
+            //1st user role: "admin", but after that in put: all will be user
+            const usersCount = await User.countDocuments();
+            if(usersCount == 0){
+                user.role = 'admin';
+            }
+
             await user.save();
             res.status(201).json(user);
             
@@ -68,7 +75,7 @@ usersCltr.login = async(req, res) => {
 
 
     //generate a jwt and send the jwt
-    const tokenData = {userId: userPresent._id}
+    const tokenData = {userId: userPresent._id, role: userPresent.role};
     const token = jwt.sign(tokenData, process.env.JWT_SECRET, {expiresIn: '7d'});  //7days
     res.json({token: token});
 }
