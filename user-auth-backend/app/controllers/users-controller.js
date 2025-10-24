@@ -91,6 +91,42 @@ usersCltr.account = async(req, res) => {
     }
 }
 
+usersCltr.list = async(req, res) => {
+    try{
+        const users = await User.find();
+        res.json(users);
+    }catch(err){
+        console.log(err);
+        res.status(500).json({error: "Something went wrong"});
+    }
+}
+
+
+//setup a remove api to delete the user record from the database using their id
+usersCltr.remove = async(req, res) => {
+    const id = req.params.id;
+
+    //edge cases -> admin cannot delete own account
+    if(id == req.userId){
+        return res.status(400).json({error: 'Admin cannot delete his own account'});
+    }
+
+    try {
+        const user = await User.findByIdAndDelete(id);
+        if (!user) {
+            return res.status(404).json({error: 'User not found'});
+        }
+
+        // res.json(user);
+        res.json({message: 'User deleted successfully', user});
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: 'Something went wrong' });
+    }
+}
+ 
+
+
 module.exports = usersCltr;
 
 

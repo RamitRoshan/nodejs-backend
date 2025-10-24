@@ -7,6 +7,7 @@ const configureDB = require('./config/db');
 const usersCltr = require('./app/controllers/users-controller');
 const notesCltr = require('./app/controllers/notes-controller');
 const authenticateUser = require('./app/middlewares/authenticate');
+const authorizeUser = require('./app/middlewares/authorize');
 require('dotenv').config();
 const port = process.env.PORT || 5000;
 const app = express();
@@ -33,8 +34,12 @@ app.post('/api/users/login', usersCltr.login);
 //account details of users
 app.get('/api/users/account', authenticateUser, usersCltr.account);
 
+//get all users information
+app.get('/api/users/all', authenticateUser, authorizeUser(['admin', 'moderator']), usersCltr.list);
 
- 
+// Delete a user (requires authentication)
+app.delete('/api/users/:id', authenticateUser, authorizeUser(['admin', 'user']), usersCltr.remove);
+
 // Notes routes
 
 // Retrieve all notes (requires authentication)
