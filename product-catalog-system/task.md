@@ -26,7 +26,7 @@ Customer: Can only view products.
 3. Product Management
 
 ```
-Each product will have the following attributes: name, price, description, approval status, and an image.
+Each product will have the following attributes: name, price, description, approval status, and an image.(use multer package for image)
 Implement soft deletion for products, where "deleted" products are marked as inactive rather than being permanently removed.
 Admins have the exclusive ability to restore products marked as inactive.
 Include features for product search, sorting (e.g., by name, price), and pagination.
@@ -39,3 +39,82 @@ Design RESTful APIs to handle all server-side logic.
 Use MongoDB with Mongoose for the database. Include a deleted flag or similar in your product schema for soft deletion.
 Implement middleware for authentication and role-based authorization checks.
 For image uploads, consider using Multer.
+
+
+
+
+
+
+## Initial project setup
+
+```
+   set MVC architecture 
+   setup server
+   connect to db
+
+model - 
+   user
+      username
+      email
+      password
+      role
+      timestamps
+
+controller 
+   1. POST /api/users/register
+         perform form validations 
+            - role should not admin or moderator 
+         first user is admin
+         encrypt password and store to db
+
+      test api 
+   
+   2. POST /api/users/login
+      verify user account details
+      generate token and send to fe
+
+      test api 
+   
+   3. GET /api/users/account 
+         setup protected route
+         middleware - authenticateUser 
+
+   4. POST /api/users/create-moderator auth, authorize(['admin'])
+         allow an admin to create a user 
+
+
+   model 
+      - Product
+         name
+         price
+         description
+         isApproved
+         image
+      
+   CRUD 
+
+      1. POST api/products - auth, authorize(['admin', 'moderator'])
+            allow product to be created
+
+            if the user is moderator 
+               product.isApproved = false 
+
+
+
+
+
+               const product = new Product(values); 
+            
+               if(req.role == "moderator") {
+                  product.isApproved = false
+               } else {
+                  product.isApproved = true 
+               }
+               
+
+
+// Read Product
+
+         Product.find({ isApproved: true })
+
+```
