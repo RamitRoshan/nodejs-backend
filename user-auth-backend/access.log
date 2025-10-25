@@ -153,3 +153,12 @@
 ::1 - - [24/Oct/2025:07:44:34 +0000] "DELETE /api/users/68fb0e4ee83b3121e8ea144d HTTP/1.1" 403 26
 ::1 - - [24/Oct/2025:07:46:05 +0000] "DELETE /api/users/68fb0bb3baaee39ae02ad2ce HTTP/1.1" 403 26
 ::1 - - [24/Oct/2025:07:49:51 +0000] "DELETE /api/users/68fb0bb3baaee39ae02ad2ce HTTP/1.1" 200 303
+::1 - - [24/Oct/2025:08:02:34 +0000] "POST /api/users/login HTTP/1.1" 400 25
+::1 - - [24/Oct/2025:08:02:43 +0000] "POST /api/users/login HTTP/1.1" 200 207
+::1 - - [24/Oct/2025:08:02:57 +0000] "GET /api/users/all HTTP/1.1" 403 26
+::1 - - [24/Oct/2025:08:03:26 +0000] "POST /api/users/register HTTP/1.1" 201 255
+::1 - - [24/Oct/2025:08:03:43 +0000] "POST /api/users/login HTTP/1.1" 200 207
+::1 - - [24/Oct/2025:08:03:58 +0000] "GET /api/users/all HTTP/1.1" 403 26
+::1 - - [24/Oct/2025:08:04:42 +0000] "POST /api/users/login HTTP/1.1" 200 208
+::1 - - [24/Oct/2025:08:04:55 +0000] "GET /api/users/all HTTP/1.1" 200 1286
+::1 - - [24/Oct/2025:08:05:23 +0000] "DELETE /api/users/68fb1470017aaffda42c64ac HTTP/1.1" 200 302
