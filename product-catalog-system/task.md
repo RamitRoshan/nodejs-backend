@@ -116,5 +116,3 @@ controller
 // Read Product
 
          Product.find({ isApproved: true })
-
-```
