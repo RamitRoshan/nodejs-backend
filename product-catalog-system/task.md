@@ -1,4 +1,4 @@
-# Product Catalog System.
+# Product Catalog System :
 
 ## Overview
 In this take-home assignment, you are tasked with developing an advanced product catalog system using the MERN stack (MongoDB, Express.js, React.js, and Node.js). This system will feature differentiated access and functionalities for three types of users: admin, moderator, and customer. Key features include user authentication, role-based authorization, product management with soft deletion and restoration, and a dynamic product listing with search, sort, and pagination capabilities.
@@ -6,7 +6,7 @@ In this take-home assignment, you are tasked with developing an advanced product
 ## Objective
 Your goal is to build a secure, efficient, and user-friendly web application that demonstrates your capabilities in full-stack development, focusing on CRUD operations, authentication and authorization, and advanced database handling with soft deletion.
 
-### Functional Requirements
+## Functional Requirements
 
 1. User Authentication and Authorization <br>
 ```
@@ -111,7 +111,7 @@ controller
                   product.isApproved = true 
                }
                
-
+```
 
 // Read Products:
 
