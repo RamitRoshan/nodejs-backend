@@ -116,3 +116,9 @@ controller
 // Read Products:
 
          Product.find({ isApproved: true })
+
+
+
+- use multer for uploading files and images.
+  
+          npm install multer
