@@ -1,3 +1,4 @@
+const axios = require('axios');
 const Employee = require('../models/employee-model');
 const {employeeValidationSchema} = require('../validators/employee-validator');
 const employeesCntrl = {};

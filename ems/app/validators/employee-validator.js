@@ -5,6 +5,7 @@ const employeeValidationSchema = Joi.object({
     lastName: Joi.string().trim().pattern(/^[a-zA-Z]+$/).message('last name should consist of only alphabets').required(),
     username: Joi.string().trim().required(),
     email: Joi.string().trim().email().required(),
+    address: Joi.string(),
     mobile: Joi.string().trim().pattern(/^[0-9]*$/).message('mobile should be only numbers').min(10).max(10).required()
 });
 
