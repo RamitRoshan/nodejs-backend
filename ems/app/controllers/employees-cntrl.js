@@ -47,7 +47,14 @@ employeesCntrl.create = async(req, res) => {
     try{
         //then, create a object
         const emp = new Employee(value);
+        const geoCodeResponse = await axios.get(`https://geocode.maps.co/search?q=${emp.address}&api_key=${process.env.GEOCODE_API_KEY}`);
         //save the object
+        // await emp.save();
+
+        if(geoCodeResponse.data.length > 0){
+            emp.geo.lat = geoCodeResponse.data[0].lat;
+            emp.geo.lng = geoCodeResponse.data[0].lon;
+        }
         await emp.save();
         res.status(201).json(emp);
 
