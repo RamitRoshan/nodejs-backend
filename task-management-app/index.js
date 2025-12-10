@@ -1,11 +1,13 @@
 const express = require('express');
 const configureDB = require('./config/db');
 const taskscntrl = require('./app/controllers/tasks-cntrl');
+const cors = require('cors');
 const app = express();
 const port = 7070;
 
 
 //middle-ware
+app.use(cors());  //ENABLE CORS HERE
 app.use(express.json());
 
 configureDB();

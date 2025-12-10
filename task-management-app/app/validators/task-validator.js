@@ -9,8 +9,8 @@ const taskValidationSchema = Joi.object({
 
     description: Joi.string()
         .trim()
-        .min(5)
-        .message('Description should be at least 5 characters long')
+        .min(3)
+        .message('Description should be at least 3 characters long')
         .required(),
 
     status: Joi.string()
