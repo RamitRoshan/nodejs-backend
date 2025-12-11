@@ -3,7 +3,8 @@ const Joi = require('joi');
 const taskValidationSchema = Joi.object({
     title: Joi.string()
         .trim()
-        .pattern(/^[a-zA-Z\s]+$/)
+        // .pattern(/^[a-zA-Z\s]+$/)
+        .pattern(/^[a-zA-Z0-9\s]+$/)
         .message('Title should consist of only alphabets')
         .required(),
 
