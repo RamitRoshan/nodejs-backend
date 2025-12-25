@@ -1,0 +1,24 @@
+{
+  "page": "services",
+  "companyName": "NovaEdge Solutions",
+  "title": "Our Services",
+  "description": "We offer a range of services tailored to meet modern business needs.",
+  "services": [
+    {
+      "name": "Web Application Development",
+      "details": "End-to-end development of scalable and high-performance web applications."
+    },
+    {
+      "name": "Backend & API Development",
+      "details": "Secure and efficient REST API development for web and mobile platforms."
+    },
+    {
+      "name": "UI/UX Design",
+      "details": "User-centered interface design focused on usability and engagement."
+    },
+    {
+      "name": "Application Maintenance & Support",
+      "details": "Ongoing monitoring, enhancements, and technical support for applications."
+    }
+  ]
+}

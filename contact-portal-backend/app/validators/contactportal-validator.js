@@ -6,10 +6,26 @@ const contactValidationSchema = Joi.object({
     message: Joi.string().trim().min(3).required()
 });
 
-contactIdValidationSchema = {}
+// contactIdValidationSchema = {}
 
 
 module.exports = {
-    contactValidationSchema: contactValidationSchema,
-    contactIdValidationSchema: this.contactIdValidationSchema
+    contactValidationSchema: contactValidationSchema
 };
+
+
+
+/*
+const Joi = require('joi');
+
+const contactValidationSchema = Joi.object({
+  name: Joi.string().trim().min(3).required(),
+  email: Joi.string().trim().email().required(),
+  message: Joi.string().trim().min(3).required()
+});
+
+module.exports = {
+  contactValidationSchema
+};
+
+ */

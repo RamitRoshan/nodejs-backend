@@ -77,3 +77,56 @@
 }
 
 ```
+
+
+## TO Check API :
+     
+1. GET :
+```   
+     http://localhost:5050/api/home
+
+     http://localhost:5050/api/about
+
+     http://localhost:5050/api/services
+     
+     http://localhost:5050/api/contact
+```
+
+2. POST
+
+```
+=> 
+
+http://localhost:5050/api/contact/submit
+
+(body -> raw -> json)
+
+{
+    "name": "RamitRoshan",
+    "email": "ramitroshan@gmail.com",
+    "message": "I wants to know more about your servies"
+}
+
+=> 
+
+http://localhost:5050/api/admin/login
+
+(body -> raw -> json)
+
+{
+  "secretKey": "secret@*****"
+}
+
+```
+
+3. GET (get all contact submission)
+
+```
+http://localhost:5050/api/admin/contacts
+
+(Headers -> add)
+
+key                            Value
+admin-secret                   secret@*****
+
+```

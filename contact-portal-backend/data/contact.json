@@ -1,0 +1,11 @@
+{
+  "page": "contact",
+  "companyName": "NovaEdge Solutions",
+  "title": "Get in Touch",
+  "description": "Have a project in mind or a question for us? Reach out using the form below.",
+  "contactDetails": {
+    "email": "contact@novaedgesolutions.com",
+    "phone": "+91-90000-12345",
+    "location": "Bangalore, India"
+  }
+}
