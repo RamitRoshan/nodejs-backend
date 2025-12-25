@@ -19,3 +19,6 @@ const authenticateUser = (req, res, next) => {
 }
 
 module.exports = authenticateUser;
+
+
+// In this Project, I am not going to use jwt authentications

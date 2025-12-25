@@ -1,24 +1,10 @@
-// const Contact = require('../models/contactportal-model');
-// const {contactValidationSchema} = require('../validators/contactportal-validator');
-
-// const contactPortalCltr = {};
-
-
- 
-
-// module.exports = contactPortalCltr;
-
-
-
-
 const Contact = require('../models/contactportal-model');
 const { contactValidationSchema } = require('../validators/contactportal-validator');
 
 const contactPortalCntrl = {};
 
 
-//    PUBLIC CONTENT APIs
- 
+// public content APIs 
 
 // Home page
 contactPortalCntrl.home = (req, res) => {
