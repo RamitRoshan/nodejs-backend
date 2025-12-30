@@ -1,5 +1,6 @@
-## Question 1: Frontend Access to JWT
+## Questions: 
 
+#### (Frontend Access to JWT)
 Ques 1). How can we prevent frontend JavaScript from reading the JWT token? so token cannot read it from local-storage ? <br>
 ans: We should not store JWT in localStorage. Instead, we store it in HTTP-only cookies, which cannot be accessed by JavaScript but are automatically sent with every request. <br>
 
@@ -26,5 +27,14 @@ ans: We add cookies (HTTP-only, Secure), middleware authorization, and role-base
 7. What are the benefits of using Mongoose ODM when working with MongoDB in a Node.js / MERN application?
 
 8. How do you handle errors globally in a backend application (Node.js / Express)?
+
+9. How do we receive data in a POST request in a backend application using Express.js ? (How do we receive data from the client using a POST request in the backend ?) 
+    
+10. From a single POST API, how can we store the same request data into multiple (three) different database models/collections ? <br> (
+How can we save data from a single POST request into multiple (three) different models/collections in the backend ?)
+
+11. How can we optimize a POST API that needs to write data into multiple models at the same time?
+
+12. How do you ensure data consistency when saving data to multiple models from a single POST request ?
 
 
