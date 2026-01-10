@@ -28,6 +28,7 @@ ans: We add cookies (HTTP-only, Secure), middleware authorization, and role-base
 
 8. How do you handle errors globally in a backend application (Node.js / Express)?
 
+Imp
 9. How do we receive data in a POST request in a backend application using Express.js ? (How do we receive data from the client using a POST request in the backend ?) 
     
 10. From a single POST API, how can we store the same request data into multiple (three) different database models/collections ? <br> (
@@ -38,3 +39,11 @@ How can we save data from a single POST request into multiple (three) different 
 12. How do you ensure data consistency when saving data to multiple models from a single POST request ?
 
 
+
+# Fullstack appplication with CRUD functionality for managing employee
+
+#### Interview Questions:
+you have a model and it contains certain fields but you want to fetch data from my api and
+perform operations from your app but you dont have access to my db and only the api response,
+how will you use my API response and store the data in your database.
+The fields of both my api response and your model are different but the types are the same hence value will match? tell me your approach?
