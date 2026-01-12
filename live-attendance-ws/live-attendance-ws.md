@@ -686,6 +686,7 @@ When a client connects:
 }
 ```
 
+
 **No Active Session:**
 
 ```json
