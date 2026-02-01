@@ -15,6 +15,7 @@ const server = http.createServer((request, response) => {
 
     } else if(request.url === "/items" && request.method === "GET"){ 
         response.writeHead(200, {"Content-Type": "application/json"});
+        //JSON.stringigy -> used to convert object to string
         response.end(JSON.stringify(items));
 
     } else if(request.url === "/health" && request.method === "GET"){
