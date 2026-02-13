@@ -162,3 +162,10 @@
 ::1 - - [24/Oct/2025:08:04:42 +0000] "POST /api/users/login HTTP/1.1" 200 208
 ::1 - - [24/Oct/2025:08:04:55 +0000] "GET /api/users/all HTTP/1.1" 200 1286
 ::1 - - [24/Oct/2025:08:05:23 +0000] "DELETE /api/users/68fb1470017aaffda42c64ac HTTP/1.1" 200 302
+::1 - - [13/Feb/2026:07:57:37 +0000] "POST /api/users/register HTTP/1.1" 201 265
+::1 - - [13/Feb/2026:07:57:47 +0000] "POST /api/users/register HTTP/1.1" 400 31
+::1 - - [13/Feb/2026:07:58:22 +0000] "POST /api/users/register HTTP/1.1" 400 31
+::1 - - [13/Feb/2026:07:58:32 +0000] "POST /api/users/register HTTP/1.1" 201 264
+::1 - - [13/Feb/2026:08:00:07 +0000] "POST /api/users/register HTTP/1.1" 400 68
+::1 - - [13/Feb/2026:08:00:13 +0000] "POST /api/users/register HTTP/1.1" 201 254
+::1 - - [13/Feb/2026:11:22:17 +0000] "POST /api/users/register HTTP/1.1" 201 256
